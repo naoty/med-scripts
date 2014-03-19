@@ -9,6 +9,7 @@
   "author": "Naoto Kaneko <naoty.k@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "marked": "~0.3.2"
+    "marked": "~0.3.2",
+    "emoji-images": "~0.1.1"
   }
 }
