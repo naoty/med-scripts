@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-var marked = require("marked");
+var marked = require("marked")
+    pygmentize = require("pygmentize-bundled");
 
 process.stdin.resume();
 process.stdin.setEncoding("utf8");

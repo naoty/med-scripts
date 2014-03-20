@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+var marked = require("marked"),
+    pygmentize = require("pygmentize-bundled");
+
+marked.setOptions({
+    highlight: function (code, lang, callback) {
+        pygmentize({ lang: lang, format: "html" }, code, function (error, result) {
+            callback(error, result.toString());
+        });
+    }
+});
+
+process.stdin.resume();
+process.stdin.setEncoding("utf8");
+
+process.stdin.on("data", function (chunk) {
+    marked(chunk, function (error, content) {
+        if (error) {
+            throw error;
+        }
+        console.log(content);
+    });
+});

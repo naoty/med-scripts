@@ -1,6 +1,6 @@
 {
   "name": "med-scripts",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "scripts for med",
   "main": "index.js",
   "scripts": {
@@ -8,8 +8,13 @@
   },
   "author": "Naoto Kaneko <naoty.k@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/naoty/med-scripts.git"
+  },
   "dependencies": {
     "marked": "~0.3.2",
-    "emoji-images": "~0.1.1"
+    "emoji-images": "~0.1.1",
+    "pygmentize-bundled": "~2.1.0"
   }
 }
