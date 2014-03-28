@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+
+if (process.argv.length != 3) {
+    console.error("USAGE: tumblr [title]");
+    process.exit(1);
+}
+
+var Tumblr = require("tumblrwks");
+var secret = require("../.secret.json").tumblr;
+
+var tumblr = new Tumblr(secret.oauth, secret.domain);
+var title = process.argv[2] || "untitled";
+
+process.stdin.resume();
+process.stdin.setEncoding("utf8");
+
+process.stdin.on("data", function (chunk) {
+    tumblr.post("/post", {type: "text", title: title, body: chunk}, function (error, json) {
+        if (error) {
+            console.error("Error: " + error);
+        } else {
+            console.log("Successfully published!");
+        }
+    });
+});
