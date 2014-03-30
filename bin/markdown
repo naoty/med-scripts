@@ -1,12 +1,20 @@
 #!/usr/bin/env node
 
-var marked = require("marked")
-    pygmentize = require("pygmentize-bundled");
+var marked = require("marked");
+var renderer = new marked.Renderer();
+
+renderer.code = function (code, language) {
+    var text = "";
+    text += '<pre><code class="lang-' + language + '">';
+    text += code;
+    text += "</code></pre>";
+    return text;
+};
 
 process.stdin.resume();
 process.stdin.setEncoding("utf8");
 
 process.stdin.on("data", function (chunk) {
-    console.log(marked(chunk));
+    console.log(marked(chunk, {renderer: renderer}));
 });
 
